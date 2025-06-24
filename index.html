@@ -88,6 +88,17 @@
         display: none !important;
       }
 
+      /* Mobile layout adjustments */
+      @media (max-width: 768px) {
+        :root {
+          --gap: 1rem;
+          --radius: 12px;
+        }
+        main {
+          padding: 1.5rem var(--gap);
+        }
+      }
+
       /* ---------- Card ---------- */
       .info-card {
         background: var(--card-bg);
@@ -127,7 +138,17 @@
           text-align: center;
         }
         .about img {
-          max-width: 80%;
+          max-width: 70%;
+          width: 220px;
+        }
+      }
+      @media (max-width: 480px) {
+        .about img {
+          max-width: 60%;
+          width: 180px;
+        }
+        .about h2 {
+          font-size: 1.75rem;
         }
       }
 
@@ -155,6 +176,25 @@
         margin-top: 0.5rem;
         font-size: 0.9rem;
         text-align: center;
+      }
+
+      /* Mobile gallery adjustments */
+      @media (max-width: 768px) {
+        .gallery {
+          grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+          gap: 0.8rem;
+        }
+        .gallery img {
+          border-radius: calc(var(--radius) * 0.75);
+        }
+      }
+
+      /* Small mobile gallery adjustments */
+      @media (max-width: 480px) {
+        .gallery {
+          grid-template-columns: repeat(2, 1fr);
+          gap: 0.6rem;
+        }
       }
 
       /* ---------- Contact ---------- */
@@ -198,6 +238,7 @@
         max-width: 90vw;
         max-height: 90vh;
         border-radius: var(--radius);
+        object-fit: contain;
       }
       .close-btn {
         position: absolute;
@@ -208,6 +249,19 @@
         font-size: 2rem;
         color: #ffffff;
         cursor: pointer;
+      }
+
+      /* Mobile modal adjustments */
+      @media (max-width: 768px) {
+        .modal img {
+          max-width: 95vw;
+          max-height: 80vh;
+        }
+        .close-btn {
+          top: 1rem;
+          right: 1rem;
+          font-size: 1.75rem;
+        }
       }
 
       /* ---------- Footer ---------- */
@@ -240,7 +294,7 @@
         <div>
           <h2>About Me</h2>
           <p>
-            I'm Minji (also known as "<strong>mojikootoko</strong>"), an amateur photographer living in Japan.I love Mojiko, a charming port town here, and I want to share some of the photos I've taken. Through my pictures, I hope you can feel the warm sunshine, the peaceful sea, and the beauty of everyday life.
+            I'm MINJI (also known as "<strong>mojikootoko</strong>"), an amateur photographer living in Japan. I love Mojiko, a charming port town here, and I want to share some of the photos I've taken. Through my pictures, I hope you can feel the warm sunshine, the peaceful sea, and the beauty of everyday life.
           </p>
         </div>
       </section>
