@@ -328,6 +328,11 @@
       </section>
     </main>
 
+    <!-- ===== Footer ===== -->
+    <footer>
+      <p>© 2025 MINJI (mojikootoko). All rights reserved.</p>
+    </footer>
+
     <!-- ===== Modal ===== -->
     <div id="modal" class="modal" aria-hidden="true">
       <button class="close-btn" aria-label="Close">&times;</button>
@@ -352,12 +357,28 @@
         const totalImages = 40; // 총 이미지 수 설정
         const startIndex = 1;  // 시작 번호 설정 (1부터 시작)
         
+        // 이미지 설명 배열 - 각 이미지에 대한 간략한 설명
+        const imageDescriptions = {
+          1: "모지코 항구의 일몰",
+          2: "바다 위 반사된 햇빛",
+          3: "해변가 산책로",
+          4: "항구의 등대",
+          5: "오래된 창고 건물",
+          6: "모지코 거리의 풍경",
+          7: "바닷가 카페",
+          8: "푸른 하늘과 구름",
+          9: "항구의 배들",
+          10: "해변의 모래 패턴",
+          // 기본값으로 나머지 이미지는 "모지코의 풍경"으로 설정됩니다
+        };
+        
         // 이미지 동적 생성
         for (let i = startIndex; i <= totalImages; i++) {
           const figure = document.createElement("figure");
           const img = document.createElement("img");
           img.src = `images/${i}.jpg`;
-          img.alt = `Photo ${i}`;
+          // 이미지별 설명이 있으면 사용, 없으면 기본 설명 사용
+          img.alt = imageDescriptions[i] || `모지코의 풍경 ${i}`;
           img.loading = "lazy"; // 레이지 로딩 적용
           figure.appendChild(img);
           galleryEl.appendChild(figure);
