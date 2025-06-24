@@ -301,26 +301,7 @@
 
       <!-- Gallery (default view)-->
       <section id="gallery" class="gallery" tabindex="-1">
-        <figure><img src="images/photo1.jpg" /></figure>
-        <figure><img src="images/photo2.jpg" /></figure>
-        <figure><img src="images/photo3.jpg" /></figure>
-        <figure><img src="images/photo4.jpg" /></figure>
-        <figure><img src="images/photo5.jpg" /></figure>
-        <figure><img src="images/photo6.jpg" /></figure>
-        <figure><img src="images/photo7.jpg" /></figure>
-        <figure><img src="images/photo8.jpg" /></figure>
-        <figure><img src="images/photo9.jpg" /></figure>
-        <figure><img src="images/photo10.jpg" /></figure>
-        <figure><img src="images/photo11.jpg" /></figure>
-        <figure><img src="images/photo12.jpg" /></figure>
-        <figure><img src="images/photo13.jpg" /></figure>
-        <figure><img src="images/photo14.jpg" /></figure>
-        <figure><img src="images/photo15.jpg" /></figure>
-        <figure><img src="images/photo16.jpg" /></figure>
-        <figure><img src="images/photo17.jpg" /></figure>
-        <figure><img src="images/photo18.jpg" /></figure>
-        <figure><img src="images/photo19.jpg" /></figure>
-        <figure><img src="images/photo20.jpg" /></figure>
+        <!-- 이미지는 JavaScript로 동적 생성됩니다 -->
       </section>
 
       <!-- Contact Card -->
@@ -351,6 +332,22 @@
 
         /* ---------- Dynamic year ---------- */
         $("#year").textContent = new Date().getFullYear();
+        
+        /* ---------- Gallery generation ---------- */
+        const galleryEl = $("#gallery");
+        const totalImages = 40; // 총 이미지 수 설정
+        const startIndex = 1;  // 시작 번호 설정 (1부터 시작)
+        
+        // 이미지 동적 생성
+        for (let i = startIndex; i <= totalImages; i++) {
+          const figure = document.createElement("figure");
+          const img = document.createElement("img");
+          img.src = `images/${i}.jpg`;
+          img.alt = `Photo ${i}`;
+          img.loading = "lazy"; // 레이지 로딩 적용
+          figure.appendChild(img);
+          galleryEl.appendChild(figure);
+        }
 
         /* ---------- Section routing ---------- */
         const sections = {
@@ -415,7 +412,14 @@
           modalImg.src = "";
           document.body.style.overflow = "";
         };
-        $$(".gallery img").forEach((img) => img.addEventListener("click", () => openModal(img.src, img.alt)));
+        
+        // 동적으로 생성된 이미지에 클릭 이벤트 추가
+        setTimeout(() => {
+          $$("#gallery img").forEach((img) => {
+            img.addEventListener("click", () => openModal(img.src, img.alt));
+          });
+        }, 100);
+        
         modal.addEventListener("click", (e) => {
           if (e.target === modal || e.target.classList.contains("close-btn")) closeModal();
         });
