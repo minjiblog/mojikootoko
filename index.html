@@ -278,6 +278,14 @@
         }
       }
 
+      /* ---------- Game ---------- */
+      .game canvas {
+        max-width: 100%;
+        border: 2px solid var(--accent);
+        margin-top: 1rem;
+        cursor: pointer;
+      }
+
       /* ---------- Footer ---------- */
       footer {
         text-align: center;
@@ -295,7 +303,9 @@
       <h1 id="logo">mojikootoko</h1>
       <nav>
         <a href="#about" data-section="about">About</a>
+        <a href="#gallery" data-section="gallery">Gallery</a>
         <a href="#contact" data-section="contact">Contact</a>
+        <a href="#game" data-section="game">Game</a>
         <button id="themeToggle" aria-label="Toggle theme">🌙</button>
       </nav>
     </header>
@@ -316,6 +326,16 @@
       <!-- Gallery (default view)-->
       <section id="gallery" class="gallery" tabindex="-1">
         <!-- 이미지는 JavaScript로 동적 생성됩니다 -->
+      </section>
+
+      <!-- Game Card -->
+      <section id="game" class="game info-card hidden" tabindex="-1">
+        <h2>Sliding Puzzle Game</h2>
+        <p>Choose a photo to start the sliding puzzle.</p>
+        <select id="puzzle-image-select"></select>
+        <button id="start-puzzle">Start Game</button>
+        <canvas id="puzzle-canvas" width="450" height="450" aria-label="Sliding puzzle"></canvas>
+        <p id="puzzle-message"></p>
       </section>
 
       <!-- Contact Card -->
@@ -383,6 +403,7 @@
         const sections = {
           about: $("#about"),
           gallery: $("#gallery"),
+          game: $("#game"),
           contact: $("#contact"),
         };
         const show = (id) => {
@@ -458,5 +479,6 @@
         });
       });
     </script>
+    <script src="puzzle.js"></script>
   </body>
 </html>
